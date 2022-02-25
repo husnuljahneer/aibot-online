@@ -1,10 +1,17 @@
 <template>
   <div>
     <div class="p-5 flex flex-row justify-start">
-    <h1 class="text-3xl left-0">Activities</h1>
+      <h1 class="text-3xl left-0">Activities</h1>
     </div>
-    <div class="flex flex-row mx-5">
-      <div class="flex w-full items-center">
+
+    <div
+      class="md:hidden p-20 h-96 flex flex-row items-center justify-center"
+      v-if="display == true"
+    >
+      <div class="text-3xl" v-html="this.toDisplay"></div>
+    </div>
+    <div class="flex flex-col justify-center m-5">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-4 w-full">
         <div
           @click="Deep"
           class="
@@ -21,7 +28,7 @@
           Deep
         </div>
         <div
-        @click="insult"
+          @click="insult"
           class="
             list
             flex
@@ -43,7 +50,6 @@
             justify-center
             text-white text-2xl
             third__card
-
           "
         >
           Joke
@@ -76,11 +82,14 @@
         </div>
       </div>
     </div>
-    <div class="p-20 h-96 flex flex-row items-center justify-center" v-if="display == true">
-    <div class="text-3xl" v-html="this.toDisplay"></div>
+    <div
+      class="p-20 h-96 hidden md:flex flex-row items-center justify-center"
+      v-if="display == true"
+    >
+      <div class="text-3xl" v-html="this.toDisplay"></div>
     </div>
-     <div class="p-20 h-96 flex flex-row items-center justify-center" v-else>
-    <div class="text-3xl">Click a card to generate some fun texts</div>
+    <div class="p-20 h-96 flex flex-row items-center justify-center" v-else>
+      <div class="text-3xl">Click a card to generate some fun texts</div>
     </div>
   </div>
 </template>
@@ -164,11 +173,11 @@ export default {
       const deepQuote = d[Math.floor(Math.random() * d.length)];
       this.toDisplay = `<div> ${deepQuote} </div>`;
     },
-    insult(){
-      const yoMamma = require('yo-mamma').default;
+    insult() {
+      const yoMamma = require("yo-mamma").default;
       let insultText = yoMamma();
       this.toDisplay = `<div> ${insultText} </div>`;
-    }
+    },
   },
 };
 </script>
@@ -208,13 +217,5 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
   height: 40vh;
-}
-.list{
-  margin-right: 10px;
-}
-.list:hover{
- -webkit-animation: fadein 0.5s;
-  animation: fadein 0.5s;
-  transform: scale(1.1);
 }
 </style>
