@@ -176,6 +176,7 @@ export default {
 ];
     const wyr = t[Math.floor(Math.random() * t.length)];
     return {wyr};
+    
   },
 };
 </script>
