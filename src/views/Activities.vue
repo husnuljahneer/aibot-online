@@ -1,18 +1,87 @@
 <template>
   <div>
-    Activities
-    <div class="flex flex-row" >
-      <ul class="flex w-full h-20 items-center">
-        <li @click="Deep" class="cursor-pointer flex w-full justify-center">Deep</li>
-        <li class="flex w-full justify-center">Hack</li>
-        <li class="flex w-full justify-center">Insult</li>
-        <li class="flex w-full justify-center">Joke</li>
-        <li class="flex w-full justify-center">Reverse</li>
-        <li class="flex w-full justify-center">Deep</li>
-        <li class="flex w-full justify-center">Roast</li>
-      </ul>
+    <div class="p-5 flex flex-row justify-start">
+    <h1 class="text-3xl left-0">Activities</h1>
     </div>
-    <div v-html="this.toDisplay"></div>
+    <div class="flex flex-row mx-5">
+      <div class="flex w-full items-center">
+        <div
+          @click="Deep"
+          class="
+            list
+            cursor-pointer
+            flex
+            w-full
+            items-center
+            justify-center
+            text-white text-2xl
+            first__card
+          "
+        >
+          Deep
+        </div>
+        <div
+        @click="insult"
+          class="
+            list
+            flex
+            w-full
+            items-center
+            justify-center
+            text-white text-2xl
+            second__card
+          "
+        >
+          Insult
+        </div>
+        <div
+          class="
+            list
+            flex
+            w-full
+            items-center
+            justify-center
+            text-white text-2xl
+            third__card
+
+          "
+        >
+          Joke
+        </div>
+        <div
+          class="
+            list
+            flex
+            w-full
+            items-center
+            justify-center
+            text-white text-2xl
+            fourth__card
+          "
+        >
+          Reverse
+        </div>
+        <div
+          class="
+            list
+            flex
+            w-full
+            items-center
+            justify-center
+            text-white text-2xl
+            fifth__card
+          "
+        >
+          Roast
+        </div>
+      </div>
+    </div>
+    <div class="p-20 h-96 flex flex-row items-center justify-center" v-if="display == true">
+    <div class="text-3xl" v-html="this.toDisplay"></div>
+    </div>
+     <div class="p-20 h-96 flex flex-row items-center justify-center" v-else>
+    <div class="text-3xl">Click a card to generate some fun texts</div>
+    </div>
   </div>
 </template>
 
@@ -21,10 +90,12 @@ export default {
   data() {
     return {
       toDisplay: "",
+      display: false,
     };
   },
   methods: {
     Deep() {
+      this.display = true;
       let d = [
         "How can mirrors be real if our eyes aren't real?",
         "It's true that we don't know what we've got until we lose it, but it's also true that we don't know what we've been missing until it arrives.",
@@ -91,11 +162,59 @@ export default {
         "Stop the earth from spinning, I want to get off!",
       ];
       const deepQuote = d[Math.floor(Math.random() * d.length)];
-      this.toDisplay = `<div style="display:block"> ${deepQuote} </div>`;
+      this.toDisplay = `<div> ${deepQuote} </div>`;
     },
+    insult(){
+      const yoMamma = require('yo-mamma').default;
+      let insultText = yoMamma();
+      this.toDisplay = `<div> ${insultText} </div>`;
+    }
   },
 };
 </script>
 
 <style>
+.first__card {
+  background-image: url(https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 40vh;
+}
+.second__card {
+  background-image: url(https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 40vh;
+}
+.third__card {
+  background-image: url(https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 40vh;
+}
+.fourth__card {
+  background-image: url(https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 40vh;
+}
+.fifth__card {
+  background-image: url(https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 40vh;
+}
+.list{
+  margin-right: 10px;
+}
+.list:hover{
+ -webkit-animation: fadein 0.5s;
+  animation: fadein 0.5s;
+  transform: scale(1.1);
+}
 </style>

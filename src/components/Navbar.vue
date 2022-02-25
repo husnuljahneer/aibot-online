@@ -19,9 +19,10 @@
   >
     <div class="navbar justify-center text-black w-11/12 " id="nav">
       <div class="md:flex px-2 mx-2 navbar-center lg:flex">
-        <span class="text-4xl font-medium font-serif text-black">
+        <router-link to="/"><span class="text-4xl font-medium font-serif text-black">
           AIBOT
         </span>
+        </router-link>
       </div>
     </div>
   </div>
